@@ -1,0 +1,94 @@
+{
+  "workflows": {
+    "fix_bug": {
+      "name": "Fix Bug Workflow",
+      "steps": [
+        "Reproduce the bug",
+        "Read relevant code sections",
+        "Identify root cause with extended thinking",
+        "Implement fix following existing patterns",
+        "Test the fix manually",
+        "Run automated tests",
+        "Update CLAUDE.md if new pitfall discovered"
+      ],
+      "commands": [
+        "/project:debug-api-issues",
+        "/project:fix-textual-error",
+        "/project:fix-yaml-corruption"
+      ]
+    },
+    
+    "add_feature": {
+      "name": "Add Feature Workflow",
+      "steps": [
+        "Review feature requirements",
+        "Research existing patterns in codebase",
+        "Plan implementation with extended thinking",
+        "Update models if needed",
+        "Implement UI components",
+        "Add API integration",
+        "Test thoroughly",
+        "Document in CLAUDE.md"
+      ],
+      "commands": [
+        "/project:add-feature"
+      ],
+      "templates": [
+        ".claude/templates/feature-task.md"
+      ]
+    },
+    
+    "code_review": {
+      "name": "Code Review Workflow",
+      "steps": [
+        "Check for architectural issues first",
+        "Verify no code duplication",
+        "Check for common pitfalls",
+        "Verify test coverage",
+        "Check type consistency",
+        "Review error handling"
+      ],
+      "hooks": [
+        ".claude/hooks/pre-commit.sh"
+      ]
+    },
+    
+    "debug_issue": {
+      "name": "Debug Issue Workflow",
+      "steps": [
+        "Gather error information",
+        "Check CLAUDE.md for known pitfalls",
+        "Add logging to trace the issue",
+        "Identify root cause",
+        "Implement fix",
+        "Test edge cases",
+        "Document if new pitfall"
+      ],
+      "subagents": [
+        "yaml-specialist",
+        "textual-expert",
+        "github-api-specialist"
+      ]
+    }
+  },
+  
+  "triggers": {
+    "on_yaml_error": {
+      "pattern": "yaml.*Error|!!python/object",
+      "workflow": "fix_bug",
+      "command": "/project:fix-yaml-corruption"
+    },
+    
+    "on_textual_error": {
+      "pattern": "TypeError.*refresh|NoActiveWorker",
+      "workflow": "fix_bug",
+      "command": "/project:fix-textual-error"
+    },
+    
+    "on_api_error": {
+      "pattern": "RateLimit|404.*Not Found|GraphQL.*timeout",
+      "workflow": "debug_issue",
+      "command": "/project:debug-api-issues"
+    }
+  }
+}

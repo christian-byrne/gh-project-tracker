@@ -1,0 +1,66 @@
+{
+  "name": "GitHub Issue Tracker",
+  "description": "Terminal-based GitHub issue tracking application with advanced filtering",
+  "language": "python",
+  "framework": "textual",
+  "version": "1.0.0",
+  
+  "patterns": {
+    "avoid": [
+      "await self.refresh()",
+      "yaml.dump(",
+      "asyncio.gather(",
+      "push_screen_wait("
+    ],
+    "prefer": [
+      "self.refresh()",
+      "yaml.safe_dump(",
+      "sequential processing",
+      "push_screen with callback"
+    ]
+  },
+  
+  "testing": {
+    "command": "python -m pytest",
+    "coverage": "python -m pytest --cov=github_issue_tracker",
+    "watch": "python -m pytest-watch"
+  },
+  
+  "linting": {
+    "command": "ruff check .",
+    "fix": "ruff check --fix .",
+    "format": "ruff format ."
+  },
+  
+  "common_tasks": {
+    "run": "python -m github_issue_tracker",
+    "clear_cache": ".claude/scripts/clear-cache.sh",
+    "validate_yaml": "python .claude/scripts/validate-yaml.py",
+    "test_api": "python .claude/scripts/test-github-api.py"
+  },
+  
+  "key_files": {
+    "entry_point": "github_issue_tracker/__main__.py",
+    "tui": "github_issue_tracker/tui.py",
+    "api_client": "github_issue_tracker/github_client.py",
+    "models": "github_issue_tracker/models.py",
+    "templates": "templates/"
+  },
+  
+  "dependencies": {
+    "runtime": [
+      "textual",
+      "pydantic",
+      "pyyaml",
+      "fuzzywuzzy",
+      "python-Levenshtein",
+      "aiofiles"
+    ],
+    "dev": [
+      "pytest",
+      "pytest-asyncio",
+      "pytest-cov",
+      "ruff"
+    ]
+  }
+}

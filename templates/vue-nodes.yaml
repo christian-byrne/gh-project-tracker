@@ -1,0 +1,51 @@
+name: "Vue Nodes Issues"
+description: "Track Vue-related node issues across Comfy ecosystem"
+
+repositories:
+  - owner: "Comfy-Org"
+    repo: "litegraph.js"
+  - owner: "Comfy-Org"
+    repo: "ComfyUI_frontend"
+  - owner: "Comfy-Org"
+    repo: "desktop"
+  - owner: "comfyanonymous"
+    repo: "ComfyUI"
+  - owner: "Comfy-Org"
+    repo: "ComfyUI-Manager"
+
+conditions:
+  - type: "label"
+    value: "area:vue-nodes"
+  - type: "label"
+    value: "area:vue-node"
+  - type: "label"
+    value: "area:vue-based-nodes-migration"
+  - type: "title_contains"
+    value: "Vue Migration"
+    case_sensitive: false
+  - type: "title_contains"
+    value: "Vue based nodes"
+    case_sensitive: false
+  - type: "title_contains"
+    value: "Vue transform"
+    case_sensitive: false
+  - type: "body_contains"
+    value: "vue node"
+    case_sensitive: false
+  - type: "body_contains"
+    value: "vue migration"
+    case_sensitive: false
+
+condition_logic: "or"  # Match ANY of the above conditions (not all)
+
+state: "all"  # open, closed, all
+
+include_discussions: true  # Whether to fetch discussions as well
+
+max_age_months: 5  # Only fetch issues updated in last 5 months
+
+ignored_issues: []  # List of issue numbers to ignore
+
+notes: {}  # Issue number -> note mapping
+
+status_overrides: {}  # Issue number -> status mapping (in_progress, blocked, future)

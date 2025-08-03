@@ -1,0 +1,116 @@
+name: Comfy Subgraph Issues
+description: Track subgraph-related issues in ComfyUI ecosystem
+repositories:
+- owner: Comfy-Org
+  repo: desktop
+- owner: Comfy-Org
+  repo: ComfyUI_frontend
+- owner: comfyanonymous
+  repo: ComfyUI
+- owner: Comfy-Org
+  repo: ComfyUI-Manager
+- owner: Comfy-Org
+  repo: comfy-cli
+- owner: Comfy-Org
+  repo: litegraph.js
+conditions:
+- type: label
+  value: area:subgraph
+  case_sensitive: true
+  negate: false
+- type: label
+  value: subgraph
+  case_sensitive: true
+  negate: false
+- type: title_contains
+  value: subgraph
+  case_sensitive: false
+  negate: false
+condition_logic: or
+state: all
+include_discussions: false
+max_age_months: 5
+ignored_issues:
+- 1113
+- 1194
+- 8430
+- 8216
+- 7976
+- 8591
+- 4423
+- 7171
+- 7064
+- 7058
+- 7070
+- 7053
+- 7087
+- 6276
+- 5829
+- 6700
+- 7089
+- 7130
+- 4995
+- 7163
+- 7106
+- 7142
+- 5664
+- 5959
+- 7190
+- 7185
+- 7220
+- 7239
+- 4196
+- 7149
+- 7269
+- 7271
+- 7515
+- 7449
+- 6275
+- 7378
+- 7418
+- 7494
+- 7442
+- 4339
+notes:
+  4609: very hard to fix
+  4618: Jin
+  4605: Christian
+  4645: should be fixed but need to verify
+  4582: Pretty hard, wait for Vue
+  4208: Only need hotkey
+  4189: All done; just need seed randomize
+  4195: Wait for Vue
+  4563: Wait for Vue
+  4203: low priority
+  4166: Not that hard
+  1077: Prob not necessary
+  4476: Nice to have x10
+  4149: Nice to have
+  4601: Simon
+  1170: Ben
+  1085: Hard, nice-to-have
+  4632: Hard
+  4647: Christian
+  4650: Christian
+status_overrides:
+  1113: blocked
+  4561: future
+  4609: help_wanted_team
+  4522: future
+  4239: future
+  4582: future
+  4208: help_wanted_team
+  4189: future
+  4195: future
+  4563: future
+  4166: help_wanted_os
+  1077: help_wanted_os
+  4476: help_wanted_os
+  4149: future
+  4601: future
+  1085: future
+  4632: help_wanted_team
+  4621: future
+  4650: done
+  4647: done
+  4203: future
